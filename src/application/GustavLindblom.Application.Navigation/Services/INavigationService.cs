@@ -8,6 +8,6 @@ namespace GustavLindblom.Application.Navigation.Services
 {
     public interface INavigationService
     {
-        Task<NavigationViewModel> GetNavigation();
+        Task<NavigationViewModel> GetNavigationAsync();
     }
 }

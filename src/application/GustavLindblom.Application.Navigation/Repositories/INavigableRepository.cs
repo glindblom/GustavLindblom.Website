@@ -8,6 +8,6 @@ namespace GustavLindblom.Application.Navigation.Repositories
 {
     interface INavigableRepository
     {
-        Task<IEnumerable<Navigable>> GetNavigables();
+        Task<IEnumerable<Navigable>> GetNavigablesAsync();
     }
 }

@@ -17,9 +17,9 @@ namespace GustavLindblom.Application.Navigation.Services
             _navigableRepository = navigableRepository;
         }
 
-        public async Task<NavigationViewModel> GetNavigation()
+        public async Task<NavigationViewModel> GetNavigationAsync()
         {
-            var navigables = await _navigableRepository.GetNavigables();
+            var navigables = await _navigableRepository.GetNavigablesAsync();
 
             return new NavigationViewModel()
             {

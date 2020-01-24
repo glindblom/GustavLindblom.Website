@@ -8,7 +8,7 @@ namespace GustavLindblom.Application.Navigation.Repositories
 {
     class NavigableRepository : INavigableRepository
     {
-        public async Task<IEnumerable<Navigable>> GetNavigables()
+        public async Task<IEnumerable<Navigable>> GetNavigablesAsync()
         {
             var navigables = await Task.FromResult(new List<Navigable>()
             {

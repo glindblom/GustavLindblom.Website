@@ -6,7 +6,7 @@
 @inject IBlogService BlogService;
 
 @{
-    BlogViewModel blogViewModel = await BlogService.GetBlogViewModel();
+    BlogViewModel blogViewModel = await BlogService.GetBlogViewModelAsync();
 }
 
 @if (blogViewModel != null)

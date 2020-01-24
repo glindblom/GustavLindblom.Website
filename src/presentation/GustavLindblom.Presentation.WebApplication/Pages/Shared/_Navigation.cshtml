@@ -3,7 +3,7 @@
 @inject INavigationService NavigationService;
 
 @{
-    NavigationViewModel navigationViewModel = await NavigationService.GetNavigation();
+    NavigationViewModel navigationViewModel = await NavigationService.GetNavigationAsync();
 }
 
 

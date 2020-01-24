@@ -9,9 +9,9 @@ namespace GustavLindblom.Application.Blog.Repositories
 {
     public interface IPostRepository
     {
-        Task<IEnumerable<PostViewModel>> GetAll();
-        Task<PostViewModel> GetPinned();
-        Task<PostDetailViewModel> Get(string id);
-        Task<string> Create(PostDetailViewModel post);
+        Task<IEnumerable<PostViewModel>> GetAllAsync();
+        Task<PostViewModel> GetPinnedAsync();
+        Task<PostDetailViewModel> GetAsync(string id);
+        Task<string> CreateAsync(PostDetailViewModel post);
     }
 }

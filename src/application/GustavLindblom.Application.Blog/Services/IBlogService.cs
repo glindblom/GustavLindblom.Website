@@ -8,8 +8,8 @@ namespace GustavLindblom.Application.Blog.Services
 {
     public interface IBlogService
     {
-        Task<BlogViewModel> GetBlogViewModel();
-        Task<PostDetailViewModel> GetPostDetailViewModel();
-        Task<string> CreatePost(PostDetailViewModel postDetail);
+        Task<BlogViewModel> GetBlogViewModelAsync();
+        Task<PostDetailViewModel> GetPostDetailViewModelAsync();
+        Task<string> CreatePostAsync(PostDetailViewModel postDetail);
     }
 }

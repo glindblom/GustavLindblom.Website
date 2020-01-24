@@ -21,7 +21,7 @@ namespace GustavLindblom.Application.Blog.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<PostViewModel>> GetAll()
+        public async Task<IEnumerable<PostViewModel>> GetAllAsync()
         {
             return await Task.FromResult(new List<PostViewModel>()
             {
@@ -32,18 +32,18 @@ namespace GustavLindblom.Application.Blog.Repositories
             });
         }
 
-        public async Task<PostViewModel> GetPinned()
+        public async Task<PostViewModel> GetPinnedAsync()
         {
             var post = await Task.FromResult(_random.Next(10) > 5 ? new PostViewModel() { Title = "Pinned post", Description = "Lorem ipsum pinned post", PostId = "pinned-post",  Categories = TestCategories(), Created = DateTime.Now } : null);
             return post;
         }
 
-        public async Task<PostDetailViewModel> Get(string id)
+        public async Task<PostDetailViewModel> GetAsync(string id)
         {
             return await Task.FromResult(id == "pinned-post" ? new PostDetailViewModel() { Title = "Pinned post", Abstract = "Pinned post", Content = new HtmlString("<p>This</p><p>is</p><p>pinned</p>")} : new PostDetailViewModel() {});
         }
 
-        public async Task<string> Create(PostDetailViewModel post)
+        public async Task<string> CreateAsync(PostDetailViewModel post)
         {
             var entity = new Post()
             {

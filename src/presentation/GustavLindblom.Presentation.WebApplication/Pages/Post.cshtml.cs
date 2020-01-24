@@ -23,7 +23,7 @@ namespace GustavLindblom.Presentation.WebApplication
 
         public async Task OnGet(string postId)
         {
-            PostDetailViewModel = await _postRepository.GetPost(postId);
+            PostDetailViewModel = await _postRepository.GetAsync(postId);
         }
     }
 }

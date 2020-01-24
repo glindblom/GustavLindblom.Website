@@ -17,10 +17,10 @@ namespace GustavLindblom.Application.Blog.Services
             _postRepository = postRepository;
         }
 
-        public async Task<BlogViewModel> GetBlogViewModel()
+        public async Task<BlogViewModel> GetBlogViewModelAsync()
         {
-            var posts = await _postRepository.GetAll();
-            var pinnedPost = await _postRepository.GetPinned();
+            var posts = await _postRepository.GetAllAsync();
+            var pinnedPost = await _postRepository.GetPinnedAsync();
 
             return new BlogViewModel()
             {
@@ -30,12 +30,12 @@ namespace GustavLindblom.Application.Blog.Services
             };
         }
 
-        public Task<PostDetailViewModel> GetPostDetailViewModel()
+        public Task<PostDetailViewModel> GetPostDetailViewModelAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<string> CreatePost(PostDetailViewModel postDetail)
+        public Task<string> CreatePostAsync(PostDetailViewModel postDetail)
         {
             throw new NotImplementedException();
         }

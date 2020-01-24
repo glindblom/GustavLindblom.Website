@@ -19,8 +19,8 @@ namespace GustavLindblom.Application.Blog.Services
 
         public async Task<BlogViewModel> GetBlogViewModel()
         {
-            var posts = await _postRepository.GetAllPosts();
-            var pinnedPost = await _postRepository.GetPinnedPost();
+            var posts = await _postRepository.GetAll();
+            var pinnedPost = await _postRepository.GetPinned();
 
             return new BlogViewModel()
             {
@@ -31,6 +31,11 @@ namespace GustavLindblom.Application.Blog.Services
         }
 
         public Task<PostDetailViewModel> GetPostDetailViewModel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> CreatePost(PostDetailViewModel postDetail)
         {
             throw new NotImplementedException();
         }

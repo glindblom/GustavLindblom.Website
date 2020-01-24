@@ -1,0 +1,10 @@
+﻿@page "{postId}"
+@model GustavLindblom.Presentation.WebApplication.PostModel
+
+@if (Model.PostDetailViewModel != null)
+{
+    <h2>@Model.PostDetailViewModel.Title</h2>
+    <p>Abstract: @Model.PostDetailViewModel.Abstract</p>
+    <p>Content:</p>
+    @Model.PostDetailViewModel.Content
+}

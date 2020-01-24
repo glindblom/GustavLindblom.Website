@@ -1,0 +1,77 @@
+﻿@using System.Text
+@using GustavLindblom.Application.Blog.Models
+@using GustavLindblom.Application.Blog.Services
+@using GustavLindblom.Common.ExtensionLibrary.Extensions
+@using Microsoft.AspNetCore.Html
+@inject IBlogService BlogService;
+
+@{
+    BlogViewModel blogViewModel = await BlogService.GetBlogViewModel();
+}
+
+@if (blogViewModel != null)
+{
+    <div class="posts">
+        @if (blogViewModel.PinnedPost != null)
+        {
+            <h1 class="content-subhead">Pinned Post</h1>
+
+            <section class="post">
+                <header class="post-header">
+                    <img width="48" height="48" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src="https://media-exp2.licdn.com/dms/image/C4D03AQHkEcZqlH0naA/profile-displayphoto-shrink_100_100/0?e=1585180800&v=beta&t=uoJkq564Yw2n28O3nWhd6zSNL4vLWmAvWfPHdqNLcNQ">
+                    
+                    <a href="@(blogViewModel.PostDetailBaseUrl + blogViewModel.PinnedPost.PostId)"><h2 class="post-title">@blogViewModel.PinnedPost.Title</h2></a>
+
+                    <p class="post-meta">
+                        @RenderCategories(blogViewModel.PinnedPost.Categories)
+                    </p>
+                </header>
+
+                <div class="post-description">
+                    <p>
+                        @blogViewModel.PinnedPost.Description
+                    </p>
+                </div>
+            </section>
+        }
+
+    </div>
+
+    <div class="posts">
+        <h1 class="content-subhead">Recent Posts</h1>
+
+        @foreach (var post in blogViewModel.Posts)
+        {
+            <section class="post">
+                <header class="post-header">
+                    <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" class="post-avatar" src="https://media-exp2.licdn.com/dms/image/C4D03AQHkEcZqlH0naA/profile-displayphoto-shrink_100_100/0?e=1585180800&v=beta&t=uoJkq564Yw2n28O3nWhd6zSNL4vLWmAvWfPHdqNLcNQ">
+
+                    <a href="@(blogViewModel.PostDetailBaseUrl + post.PostId)"><h2 class="post-title">@post.Title</h2></a>
+
+                    <p class="post-meta">
+                        @RenderCategories(post.Categories)
+                    </p>
+                </header>
+
+                <div class="post-description">
+                    <p>
+                        @post.Description
+                    </p>
+                </div>
+            </section>
+        }
+    </div>
+}
+
+@functions {
+
+    private readonly StringBuilder _sb = new StringBuilder();
+
+    IHtmlContent RenderCategories(IEnumerable<CategoryViewModel> categories)
+    {
+        _sb.Clear();
+        categories.ForEach(category => _sb.Append($"<a class=\"post-category post-category-{category.CssClass}\" href=\"#\">{category.DisplayText}</a>"));
+
+        return Html.Raw(_sb.ToString());
+    }
+}

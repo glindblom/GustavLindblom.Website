@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
 
-    runs-on: windows-2019
+    runs-on: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -14,8 +14,8 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Invoke publish-solution.ps1
-      run: .\publish-solution.ps1
-      shell: powershell
+      run: find src/ -name "*.csproj" | xargs dotnet publish -o out --configuration Release
+      shell: bash
     - name: FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@2.0.0
       with:
